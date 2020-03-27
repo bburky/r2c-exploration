@@ -1,0 +1,8 @@
+rules:
+    - id: curl_easy_setopt
+      languages:
+      - c
+      message: 'curl_easy_setopt: $OPT $PARAMETER'
+      patterns:
+      - pattern: curl_easy_setopt($HANDLE, $OPT, $PARAMETER)
+      severity: WARNING
