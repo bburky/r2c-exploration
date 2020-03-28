@@ -71,6 +71,7 @@ rules:
       message: "Hardcoded password"
       patterns:
         - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_USERPWD, "...")'
+        - pattern-not: 'curl_easy_setopt($HANDLE, CURLOPT_USERPWD, "")'
       severity: WARNING
     - id: CURLOPT_PROXYUSERPWD
       languages:
@@ -78,6 +79,7 @@ rules:
       message: "Hardcoded password"
       patterns:
         - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXYUSERPWD, "...")'
+        - pattern-not: 'curl_easy_setopt($HANDLE, CURLOPT_PROXYUSERPWD, "")'
       severity: WARNING
     - id: CURLOPT_PASSWORD 
       languages:
@@ -85,6 +87,7 @@ rules:
       message: "Hardcoded password"
       patterns:
         - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PASSWORD, "...")'
+        - pattern-not: 'curl_easy_setopt($HANDLE, CURLOPT_PASSWORD, "")'
       severity: WARNING
     - id: CURLOPT_PROXYPASSWORD
       languages:
@@ -92,6 +95,7 @@ rules:
       message: "Hardcoded password"
       patterns:
         - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXYPASSWORD, "...")'
+        - pattern-not: 'curl_easy_setopt($HANDLE, CURLOPT_PROXYPASSWORD, "")'
       severity: WARNING
     - id: CURLOPT_TLSAUTH_PASSWORD
       languages:
@@ -99,6 +103,7 @@ rules:
       message: "Hardcoded password"
       patterns:
         - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_TLSAUTH_PASSWORD, "...")'
+        - pattern-not: 'curl_easy_setopt($HANDLE, CURLOPT_TLSAUTH_PASSWORD, "")'
       severity: WARNING
     - id: CURLOPT_PROXY_TLSAUTH_PASSWORD
       languages:
@@ -106,6 +111,7 @@ rules:
       message: "Hardcoded password"
       patterns:
         - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_TLSAUTH_PASSWORD, "...")'
+        - pattern-not: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_TLSAUTH_PASSWORD, "")'
       severity: WARNING
     - id: CURLOPT_KEYPASSWD 
       languages:
@@ -113,6 +119,7 @@ rules:
       message: "Hardcoded password"
       patterns:
         - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_KEYPASSWD, "...")'
+        - pattern-not: 'curl_easy_setopt($HANDLE, CURLOPT_KEYPASSWD, "")'
       severity: WARNING
     - id: CURLOPT_PROXY_KEYPASSWD 
       languages:
@@ -120,6 +127,7 @@ rules:
       message: "Hardcoded password"
       patterns:
         - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_KEYPASSWD, "...")'
+        - pattern-not: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_KEYPASSWD, "")'
       severity: WARNING
     - id: CURLOPT_FOLLOWLOCATION 
       languages:
