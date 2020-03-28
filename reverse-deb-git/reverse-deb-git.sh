@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # echo "Reverse dependencies of $@" >&2
+pkgs="$@"
 # this skips " |pkg" lines:
-pkgs=$(apt-cache rdepends $@ | sed -n 's/^  //gp')
-for pkg in $pkgs; do
+for pkg in $(apt-cache rdepends $@ | sed -n 's/^  //gp'); do
     if info=$(debcheckout -p $pkg); then
         split=($info)
         # git https://salsa.debian.org/haskell-team/DHG_packages.git [p/haskell-hxt-curl]
@@ -26,8 +26,8 @@ done | jq --raw-input 'split(" ") | {
     "commit_hash": .[2],
     "input_type": "GitRepoCommit"
 }' | jq -s '{
-    "name": "Debian packages that depend on: '"$@"'",
+    "name": "Debian packages that depend on: '"$pkgs"'",
     "version": "0.0.1",
-    "description": "Git development repositories for Debian packages that depend on: '"$@"'",
+    "description": "Git development repositories for Debian packages that depend on: '"$pkgs"'",
     "inputs": . | unique
 }'

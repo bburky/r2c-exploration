@@ -8,4 +8,8 @@ Generate an r2c input set from the reverse dependencies of Debian packages.
 
 ## [curl_easy_setopt](curl_easy_setopt.yaml)
 
-Use sgrep to query for options set with `curl_easy_setopt`.
+sgrep query for any options set with `curl_easy_setopt`.
+
+## [curl.yaml](curl.yaml)
+
+sgrep analysis for setting specific potentially unsafe options with `curl_easy_setopt`.

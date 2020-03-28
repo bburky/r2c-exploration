@@ -1,0 +1,141 @@
+rules:
+    - id: CURLOPT_SSL_OPTIONS
+      languages:
+      - c
+      message: "Setting CURLOPT_SSL_OPTIONS to a non-zero value is unsafe"
+      patterns:
+        - pattern: curl_easy_setopt($HANDLE, CURLOPT_SSL_OPTIONS, ...)
+        - pattern-not: curl_easy_setopt($HANDLE, CURLOPT_SSL_OPTIONS, 0)
+        - pattern-not: curl_easy_setopt($HANDLE, CURLOPT_SSL_OPTIONS, 0L)
+        - pattern-not: curl_easy_setopt($HANDLE, CURLOPT_SSL_OPTIONS, NUL)
+        - pattern-not: curl_easy_setopt($HANDLE, CURLOPT_SSL_OPTIONS, NULL)
+      severity: WARNING
+    - id: CURLOPT_SSL_VERIFYHOST
+      languages:
+      - c
+      message: "Setting CURLOPT_SSL_VERIFYHOST to zero is unsafe"
+      patterns:
+        - pattern-either:
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYHOST, 0)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYHOST, 0L)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYHOST, NUL)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYHOST, NULL)'
+      severity: WARNING
+    - id: CURLOPT_PROXY_SSL_VERIFYHOST
+      languages:
+      - c
+      message: "Setting CURLOPT_PROXY_SSL_VERIFYHOST to zero is unsafe"
+      patterns:
+        - pattern-either:
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_SSL_VERIFYHOST, 0)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_SSL_VERIFYHOST, 0L)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_SSL_VERIFYHOST, NUL)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_SSL_VERIFYHOST, NULL)'
+      severity: WARNING
+    - id: CURLOPT_SSL_VERIFYPEER
+      languages:
+      - c
+      message: "Setting CURLOPT_SSL_VERIFYPEER to zero is unsafe"
+      patterns:
+        - pattern-either:
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYPEER, 0)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYPEER, 0L)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYPEER, NUL)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYPEER, NULL)'
+      severity: WARNING
+    - id: CURLOPT_PROXY_SSL_VERIFYPEER
+      languages:
+      - c
+      message: "Setting CURLOPT_PROXY_SSL_VERIFYPEER to zero is unsafe"
+      patterns:
+        - pattern-either:
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_SSL_VERIFYPEER, 0)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_SSL_VERIFYPEER, 0L)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_SSL_VERIFYPEER, NUL)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_SSL_VERIFYPEER, NULL)'
+      severity: WARNING
+    - id: CURLOPT_SSL_VERIFYSTATUS
+      languages:
+      - c
+      message: "Setting CURLOPT_SSL_VERIFYSTATUS to zero is unsafe"
+      patterns:
+        - pattern-either:
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYSTATUS, 0)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYSTATUS, 0L)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYSTATUS, NUL)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_SSL_VERIFYSTATUS, NULL)'
+      severity: WARNING
+    - id: CURLOPT_USERPWD
+      languages:
+      - c
+      message: "Hardcoded password"
+      patterns:
+        - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_USERPWD, "...")'
+      severity: WARNING
+    - id: CURLOPT_PROXYUSERPWD
+      languages:
+      - c
+      message: "Hardcoded password"
+      patterns:
+        - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXYUSERPWD, "...")'
+      severity: WARNING
+    - id: CURLOPT_PASSWORD 
+      languages:
+      - c
+      message: "Hardcoded password"
+      patterns:
+        - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PASSWORD, "...")'
+      severity: WARNING
+    - id: CURLOPT_PROXYPASSWORD
+      languages:
+      - c
+      message: "Hardcoded password"
+      patterns:
+        - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXYPASSWORD, "...")'
+      severity: WARNING
+    - id: CURLOPT_TLSAUTH_PASSWORD
+      languages:
+      - c
+      message: "Hardcoded password"
+      patterns:
+        - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_TLSAUTH_PASSWORD, "...")'
+      severity: WARNING
+    - id: CURLOPT_PROXY_TLSAUTH_PASSWORD
+      languages:
+      - c
+      message: "Hardcoded password"
+      patterns:
+        - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_TLSAUTH_PASSWORD, "...")'
+      severity: WARNING
+    - id: CURLOPT_KEYPASSWD 
+      languages:
+      - c
+      message: "Hardcoded password"
+      patterns:
+        - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_KEYPASSWD, "...")'
+      severity: WARNING
+    - id: CURLOPT_PROXY_KEYPASSWD 
+      languages:
+      - c
+      message: "Hardcoded password"
+      patterns:
+        - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_PROXY_KEYPASSWD, "...")'
+      severity: WARNING
+    - id: CURLOPT_FOLLOWLOCATION 
+      languages:
+      - c
+      message: "May follow HTTP redirects across domains and protocols"
+      patterns:
+        - pattern-either:
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_FOLLOWLOCATION, 1)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_FOLLOWLOCATION, 1L)'
+      severity: WARNING
+    - id: CURLOPT_UNRESTRICTED_AUTH 
+      languages:
+      - c
+      message: "Credentials may be sent to other hosts"
+      patterns:
+        - pattern-either:
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_UNRESTRICTED_AUTH, 1)'
+            - pattern: 'curl_easy_setopt($HANDLE, CURLOPT_UNRESTRICTED_AUTH, 1L)'
+      severity: WARNING

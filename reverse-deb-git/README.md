@@ -11,14 +11,14 @@ The output is JSON compatible with [`r2c upload-inputset`](https://docs.r2c.dev/
 Run the script:
 
 ```
-./reverse-deb-git.sh libcurl4 > libcurl4.json
+./reverse-deb-git.sh libcurl3-gnutls libcurl3-nss libcurl4 > libcurl.json
 ```
 
 Or use the included Dockerfile with all dependencies included.
 
 ```
 docker build -t reverse-deb-git .
-docker run --rm -t reverse-deb-git libcurl4 > libcurl4.json
+docker run --rm -t reverse-deb-git libcurl3-gnutls libcurl3-nss libcurl4 > libcurl.json
 ```
 
 And upload it:
@@ -30,6 +30,6 @@ r2c upload-inputset .\libcurl4.json
 
 <https://salsa.debian.org/> has replaced <https://anonscm.debian.org/>, but not all the packages have updated their repository URLs.
 
-Sometimes connections to <https://anonscm.debian.org/> time out and get incorrectly skipped.
+Sometimes connections to <https://salsa.debian.org/> time out and get incorrectly skipped.
 
 There's no guarantee that all the reverse dependencies are implmented in the same programming language. A C language library will have mostly C reverse dependencies, but not all. This may make analysis difficult.
